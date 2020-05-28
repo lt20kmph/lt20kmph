@@ -1,0 +1,10 @@
+dumps
+pics
+trash
+*.png
+*.jpg
+leaflet*
+moment*
+secrets.js
+yall*
+pages
