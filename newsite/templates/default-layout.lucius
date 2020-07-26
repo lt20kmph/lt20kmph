@@ -1,0 +1,312 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Montserrat", sans-serif;
+}
+
+:root {
+  --color-fg: #050f07;
+  --color-bg: #d6dde1;
+  /* --accent-light: #acacb4; */
+  --accent-light: #acc0c4;
+  --accent-dark: #030615;
+  --accent-darker: #0d0f05;
+  --color-overlay: #121515;
+  --color-dark-opaque: rgb(18, 21, 21, 0.75);
+  --color-light-opaque: rgb(172, 192, 196, 0.45);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  background: var(--color-bg);
+  font-weight: 400;
+  font-size: 1rem;
+  position: relative;
+  height: 100%;
+  line-height: 1.5;
+  color: var(--accent-darker);
+  overflow-x: hidden;
+}
+
+h1 {
+    margin: 0;
+}
+
+picture {
+  overflow: hidden;
+}
+
+picture img {
+  transition: filter 0.2s;
+}
+
+picture.lazy img {
+  filter: blur(10px);
+}
+
+
+.logo {
+  padding: 0.1em;
+  margin: 0;
+  font-weight: 700;
+  font-size: 3em;
+  font-family: "Amatic SC", cursive;
+  color: var(--accent-dark);
+}
+
+.content {
+  background-color: var(--color-bg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* navigation styles start here */
+
+header {
+  background: var(--accent-light);
+  text-align: center;
+  position: fixed;
+  border-bottom: 1px solid var(--accent-dark);
+  z-index: 8;
+  width: 100%;
+  box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+/* changed this from the tutorial video to
+   allow it to gain focus, making it tabbable */
+.nav-toggle {
+  position: absolute !important;
+  top: -9999px !important;
+  left: -9999px !important;
+}
+
+.nav-toggle:focus ~ .nav-toggle-label {
+  outline: 3px solid rgba(lightblue, 0.75);
+}
+
+.nav-toggle-label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-left: 1em;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.nav-toggle-label span,
+.nav-toggle-label span::before,
+.nav-toggle-label span::after {
+  display: block;
+  background: var(--accent-dark);
+  height: 3px;
+  width: 2em;
+  border-radius: 3px;
+  position: relative;
+}
+
+.nav-toggle-label span::before,
+.nav-toggle-label span::after {
+  content: "";
+  position: absolute;
+}
+
+.nav-toggle-label span::before {
+  bottom: 7px;
+}
+
+.nav-toggle-label span::after {
+  top: 7px;
+}
+
+nav {
+  position: absolute;
+  text-align: left;
+  top: 100%;
+  left: 0;
+  background: var(--accent-light);
+  width: 100%;
+  transform: scale(1, 0);
+  transform-origin: top;
+  transition: transform 400ms ease-in-out;
+}
+
+nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+nav li {
+  margin-top: 1em;
+  margin-bottom: 1em;
+  margin-left: 1em;
+  height: 100%;
+}
+
+nav a {
+  color: var(--accent-dark);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  opacity: 0;
+  transition: opacity 150ms ease-in-out;
+}
+
+nav a:hover {
+  color: var(--color-dark-opaque);
+  text-decoration: none;
+}
+
+.nav-toggle:checked ~ nav {
+  transform: scale(1, 1);
+}
+
+.nav-toggle:checked ~ nav a {
+  opacity: 1;
+  transition: opacity 250ms ease-in-out 250ms;
+}
+
+.dropdown-content {
+  display: none;
+  transition: 0.2s 1s;
+}
+
+/* This is needed to make the hoverable area larger! */
+.dropdown::after {
+  content: "";
+  position: absolute;
+  width: 150%;
+  height: 30px;
+  top: 100%;
+  left: 0;
+}
+
+.dropdown-content a {
+  font-size: 0.95em;
+}
+
+.dropdown-content li {
+  padding: 0.2em;
+  margin: 0.2em;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.footer {
+  margin-top: 10px;
+  margin-bottom: -14px;
+  padding: 1em;
+  background-color: var(--accent-light);
+  font-weight: 500;
+  color: var(--accent-dark);
+  text-align: center;
+  border-top: 1px solid var(--accent-dark);
+  width: 100%;
+}
+
+@media screen and (min-width: 800px) {
+  .nav-toggle-label {
+    display: none;
+  }
+
+  .dropdown {
+    position: relative;
+  }
+
+  .dropdown-content {
+    position: absolute;
+    background-color: var(--accent-light);
+    width: 400px;
+    z-index: 100;
+    top: calc(50% + 3px);
+    left: 0;
+    margin-top: 2em;
+    /* padding-top: 1em; */
+    max-height: 80vh;
+    overflow-y: scroll;
+    border: 1px solid var(--accent-dark);
+    box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.2);
+  }
+  .dropdown-content ul {
+    display: block;
+  }
+
+  .dropdown-content li {
+    display: block;
+  }
+
+  header {
+    display: grid;
+    grid-template-columns: 1fr auto minmax(600px, 3fr) 1fr;
+  }
+
+  .logo {
+    grid-column: 2 / 3;
+  }
+
+  nav {
+    all: unset; /* this causes issues with Edge, since it's unsupported */
+
+    /* the following lines are not from my video, but add Edge support */
+    position: relative;
+    text-align: left;
+    transition: none;
+    transform: scale(1, 1);
+    background: none;
+    top: initial;
+    left: initial;
+    /* end Edge support stuff */
+
+    grid-column: 3 / 4;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  nav ul {
+    display: flex;
+  }
+
+  nav > ul > li,
+  .dropdown > li {
+    margin-left: 3em;
+    margin-bottom: 0;
+  }
+
+  nav a {
+    opacity: 1;
+    position: relative;
+  }
+
+  nav a::before {
+    content: "";
+    display: block;
+    height: 5px;
+    background: black;
+    position: absolute;
+    top: -0.75em;
+    left: 0;
+    right: 0;
+    transform: scale(0, 1);
+    transition: transform ease-in-out 250ms;
+  }
+
+  nav > ul > li > a:hover::before,
+  .dropdown > li > a:hover::before {
+    transform: scale(1, 1);
+  }
+}
+

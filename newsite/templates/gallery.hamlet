@@ -1,0 +1,55 @@
+<div .overlay>
+<div .controls>
+    <div .toggle-comment>
+    <div .toggle-close>
+<div .main-img>
+    <picture #previous-big-img .big-img data-type="full">
+        <source .big-source srcset="" 
+                          media="(min-width: 800px)">
+        <source .small-source srcset=""
+                            media="(min-width: 200px)">
+        <img .tiny-main src="" alt="">
+    <div .big-pic-controls>
+        <picture #big-img .big-img data-type="full">
+            <button .previous-img><
+            <source .big-source srcset="" 
+                              media="(min-width: 800px)">
+            <source .small-source srcset=""
+                                media="(min-width: 200px)">
+            <img .tiny-main src="" alt="">
+            <button .next-img>>
+            <div .comments>
+            <div .caption>
+    <picture #next-big-img .big-img data-type="full">
+        <source .big-source srcset="" 
+                          media="(min-width: 800px)">
+        <source .small-source srcset=""
+                            media="(min-width: 200px)">
+        <img .tiny-main src="" alt="">
+$if null galleryInfo
+    <p>There should be some pictures here.
+$else
+    <h1 .heading> #{title st}
+    <div .gallery>
+        $forall picInfo <- galleryInfo
+            <picture .lazy id="#{picId picInfo}"
+                           data-type="thumb"
+                           data-target-tiny="@{StaticR $ tinySize picInfo}"
+                           data-target-small="@{StaticR $ smallSize picInfo}"
+                           data-target-med="@{StaticR $ medSize picInfo}"
+                           data-target-big="@{StaticR $ bigSize picInfo}"
+                           data-target-full="@{StaticR $ fullSize picInfo}"
+                           data-comment-src="@{CommentsR (storyId st) ((read $ unpack $ picId picInfo) + 1)}">
+               <source .big-source srcset="@{StaticR $ tinySize picInfo}" 
+                                  media="(min-width: 550px)">
+               <source .small-source srcset="@{StaticR $ tinySize picInfo}" 
+                                  media="(min-width: 200px)">
+               <img src="@{StaticR $ tinySize picInfo}" 
+                    alt="#{caption picInfo}">
+    <div .words>
+        <h2 .subheading> #{subtitle}
+        $if null paragraphs
+            <p> There should be some words here.
+        $else
+            $forall paragraph <- paragraphs
+                <p>#{paragraph}

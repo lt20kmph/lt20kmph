@@ -1,0 +1,29 @@
+<header>
+  <h1 .logo> < 20 kmph
+  <input type="checkbox" #nav-toggle .nav-toggle>
+  <nav>
+    <ul>
+      <li><a href="@{HomeR}">Home
+      <li><a href="@{GalleryMainR}">Gallery
+      <li><a href="@{MapR}">Map
+      <li><a href="@{StatsR}">Stats</a>
+  <label for="nav-toggle" .nav-toggle-label>
+    <span>
+
+<!-- Page Contents -->
+<div .content>
+    ^{widget}
+
+<!-- Footer -->
+
+<footer .footer>
+  #{appCopyright $ appSettings master}
+
+      <!-- <li .dropdown> -->
+      <!--     <div .dropdown-content> -->
+      <!--       $if null storys --> 
+      <!--           There should be something here. -->
+      <!--       $else -->
+      <!--           <ul> -->
+      <!--               $forall (storyId,title) <- storys -->
+      <!--                   <li><a href="@{GalleryR storyId}">##{storyId + 1}: #{title} -->

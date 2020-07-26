@@ -1,0 +1,940 @@
+:root {
+    --color1: #000000;
+    --color2: #cde3e7;
+    --color3: #293133;
+    --color4: #61868d;
+
+    --color1-slate: #000000;
+    --color2-slate: #cde3e7;
+    --color3-slate: #293133;
+    --color4-slate: #61868d;
+
+    --color1-forest: #000000;
+    --color2-forest: #303031;
+    --color3-forest: #38532d;
+    --color4-forest: #3fca8e;
+
+    --color1-royal: #220000;
+    --color2-royal: #aaaaaa;
+    --color3-royal: #293132;
+    --color4-royal: #0f6f9f;
+
+    --color1-natural: #220000;
+    --color2-natural: #e3d3ab;
+    --color3-natural: #743535;
+    --color4-natural: #9aae98;
+
+    --color1-hot: #7C0A02;
+    --color2-hot: #B22222;
+    --color3-hot: #E85822;
+    --color4-hot: #F1BC31;
+
+    --color1-undergrowth: #233714;
+    --color2-undergrowth: #6b591d;
+    --color3-undergrowth: #efcfb6;
+    --color4-undergrowth: #fdeced;
+
+    --color1-desert: #992e24;
+    --color2-desert: #d04925;
+    --color3-desert: #696464;
+    --color4-desert: #e9e5dd;
+
+    --color1-underwater: #17223B;
+    --color2-underwater: #263859;
+    --color3-underwater: #6b778d;
+    --color4-underwater: #f1d4d4;
+
+}
+
+
+html {
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  -moz-text-size-adjust: none;
+  -ms-text-size-adjust: none;
+  position: relative;
+  height: 100%;
+  font-size: 100%;
+  font-family: "monospace";}
+
+body {
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  -moz-text-size-adjust: none;
+  -ms-text-size-adjust: none;
+  background-color: var(--color1);
+  background-image: url("bicycles.png");
+  background-repeat: repeat;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 0;
+  font-family: sans-serif;
+  height: 100%;
+  width: 100%;}
+
+button {
+  padding: 0;
+  border: none;
+  -webkit-appearance: none;
+  font: inherit;
+  color: inherit;
+  background-color: transparent;
+  /* show a hand cursor on hover; some argue that we
+  should keep the default arrow cursor for buttons */
+  cursor: pointer;
+}
+
+#mainFrame {
+  background-color: var(--color2);
+  border: 2px solid;
+  border-color: var(--color1);
+  overflow:hidden;
+  border-radius: 0em;
+  margin-left: 5%;
+  min-height: 80%;
+  margin-right: 5%;
+  margin-top: 1%;
+  margin-bottom: 1%;
+  color: var(--color1);
+  padding: 0px;
+  width: 90%;
+  }
+
+#header {
+  background-color: var(--color2);
+  /*background-image: url("path.svg");
+  background-size: 86% 93%;
+  background-repeat: no-repeat;
+  background-position: center;*/
+  color: var(--color2);
+  width: 100%;
+  height: 85px;
+  text-align:center;
+  padding: 10px 5px 5px 5px;
+}
+
+.logo g path { fill: var(--color4); }
+
+#subheader {
+  display: flex;
+  width: 100%;
+  font-size: 1.6em;
+  margin: 0;
+  padding: 0;
+  border-top: 2px solid;
+  border-top-color: var(--color1);
+  border-bottom: 2px solid;
+  border-bottom-color: var(--color1);
+  background-color: var(--color3);
+}
+
+.row {
+  display: flex;
+}
+
+.column {
+  flex: 50%;
+}
+
+h3 {
+  /*font-size: 24px;*/
+  font-size: 2em;
+  padding-bottom: 0;
+  margin-bottom: 0;
+  margin-top: 0; }
+
+#selfie {
+    float: right;
+    border: 2px solid;
+    border-color: var(--color1);
+    margin-left: 2%;
+}
+
+.atabcontent {
+  background-color: var(--color4);
+  font-size: 1em;
+  padding: 2%;
+}
+
+#Words {
+  background-color: var(--color4);
+  font-size: 1em;
+  border: 2px solid;
+  margin: 2%;
+  padding: 2%;
+}
+
+.Comments {
+  background-color: var(--color4);
+  font-size: 1em;
+  border: 2px solid;
+  margin: 0.5%;
+  padding: 0.5%;
+}
+
+.Name {
+  font-weight: bold;
+  display: inline-block;
+}
+
+.Time {
+  display: inline-block;
+  margin-left: 1%;
+}
+
+.Comment {
+    margin-top: 0.25%;
+    margin-bottom: 0.25%;
+}
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.colorLight {
+  color: var(--color2);
+  padding: 0; }
+
+.colorMedium {
+  color: var(--color4);
+  padding: 0; }
+
+.colorDark {
+  color: var(--color1);
+  padding: 0; }
+
+/* css for slideshow */
+
+* {
+  box-sizing: border-box;
+}
+
+/* Position the image container (needed to position the left and right arrows) */
+.container4Slides {
+  position: relative;
+  width: 96%;
+  margin: 2%;
+}
+
+#about {
+    position: relative;
+    margin: 2%;
+    display: none;
+}
+
+/* Hide the images by default */
+.mySlides {
+  display: none;
+  border: 2px solid;
+  border-color: var(--color1);
+  margin-bottom: -2%;
+}
+
+/* Add a pointer when hovering over the thumbnail images */
+.cursor {
+  cursor: pointer;
+}
+
+.wrapper4slides {
+    display: table-cell;
+    position: relative;
+    vertical-align: middle;
+    width: 100vw;
+}
+
+/* Next & previous buttons */
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 40%;
+  width: auto;
+  padding: 16px;
+  margin-top: 0;
+  color: var(--color2);
+  font-weight: bold;
+  font-size: 3em;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
+  color: var(--color4);
+}
+
+/* Container for image text */
+#caption-container {
+  text-align: left;
+  background-color: var(--color1);
+  font-size: 1em;
+  color: var(--color4);
+  border: 2px solid var(--color1);
+  width:99.95%;
+  position: relative;
+  z-index: 2;
+}
+
+#caption {
+    padding: 0.5% 1% 0.5% 1%;
+}
+
+#commentsButton {
+    display: block;
+    background-color: var(--color4);
+    color: var(--color1);
+    padding: 0.25% 1% 0.25% 1%;
+    font-size: 90%;
+    text-align: left;
+    margin-left: auto;
+    flex-grow: 1;
+    border-left: 2px solid var(--color1);
+}
+
+#commentsButton:hover {
+    background-color: var(--color3);
+    color: var(--color4);
+}
+
+#commentsContainer {
+    display: none;
+    background-color: var(--color4);
+    border: 2px solid;
+    border-color: var(--color1);
+    width: 99.95%;
+}
+
+.rowP:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Six columns side by side */
+.columnP {
+  float: left;
+  height: 80px;
+  width: 16.66%;
+}
+
+/* Add a transparency effect for thumnbail images */
+.demo {
+  opacity: 1;
+}
+
+rowP.active,
+.demo:hover {
+  opacity: 0.6;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  border-bottom: 2px solid;
+  border-bottom-color: var(--color1);
+  background-color: var(--color3);
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: var(--color1);
+  text-align: center;
+  padding: 4px 16px;
+  text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+  background-color: var(--color4);
+}
+
+ /* Style the tab */
+.tab {
+  overflow: hidden;
+  background-color: var(--color3);
+  color: var(--color4);
+  border-bottom: 2px solid;
+  border-bottom-color: var(--color1);
+}
+
+/* Style the buttons that are used to open the tab content */
+.tab button {
+  background-color: inherit;
+  color: inherit;
+  float: left;
+  /*font-size: 2.5vh;*/
+  font-size: 1em;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 4px 16px;
+  transition: 0.3s;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: var(--color4);
+  color: var(--color1);
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: var(--color4);
+  color: var(--color1);
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: block;
+} 
+
+/* Style The Dropdown Button */
+.pagelinks {
+  background-color: var(--color4);
+  color: var(--color1);
+  padding: 4px;
+  /* font-size: 1.6em; */
+  font-size: inherit;
+  border: none;
+  cursor: pointer;
+}
+
+.titleButton {
+  background-color: var(--color4);
+  color: var(--color1);
+  flex: 1;
+  display: inline-block;
+  padding: 4px;
+  height: 100%;
+  /* width: 90%; */
+  /* font-size: 1.6em; */
+  font-size: inherit;
+  border: none;
+  cursor: pointer;
+}
+
+.dropbtnFill {
+  background-color: var(--color4);
+  color: var(--color1);
+  padding: 4px 8px;
+  border-left: 2px solid;
+  border-left-color: var(--color1);
+  margin-left: auto;
+  /*font-size: 1.6em;*/ 
+  font-size:inherit;
+  cursor: pointer;
+}
+
+.menuIcon {
+  background-color: var(--color4);
+  color: var(--color1);
+  padding: 4px 8px;
+  /*font-size: 1.6em;*/ 
+  font-size: inherit;
+  border-right: 2px solid;
+  border-right-color: var(--color1);
+  margin-right: 0px;
+  cursor: pointer;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+#dropdown-content {
+  display: none;
+  margin-top: -2px;
+  font-size: 1.6em;
+  border-bottom: 2px solid;
+  border-bottom-color: var(--color1);
+  background-color: var(--color4);
+  color: var(--color1);
+  width: 100%;
+}
+
+/* Links inside the dropdown */
+#dropdown-content a {
+  color: var(--color1);
+  padding: 4px 16px;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+#dropdown-content a:hover {background-color: var(--color3)}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.pagelinks:hover {
+  background-color: var(--color3);
+}
+.pagelinks.active {
+  background-color: var(--color3);
+}
+
+.colorButton {
+  display: block;
+  background-color: var(--color3); 
+  border: 1px solid var(--color1);
+  color: var(--color4);
+  padding: 1em 2em;
+  text-align: center;
+  text-decoration: none;
+  font-size: 1em;
+  /*min-width: 22px;*/
+  width: 100%;
+}
+
+.colorSpanSlate1 {
+    background-color: var(--color1-slate);
+    display: inline-block;
+    width: 25%;
+    height: 100%;
+}
+.colorSpanSlate2 {
+    background-color: var(--color2-slate);
+    display: inline-block;
+    width: 25%;
+    height: 100%;
+}
+.colorSpanSlate3 {
+    background-color: var(--color3-slate);
+    display: inline-block;
+    width: 25%;
+    height: 100%;
+}
+.colorSpanSlate4 {
+    background-color: var(--color4-slate);
+    display: inline-block;
+    width: 25%;
+    height: 100%;
+}
+
+.colorSpanForest1 {
+    background-color: var(--color1-forest);
+    display: inline-block;
+    width: 25%;
+    height: 100%;
+}
+.colorSpanForest2 {
+    background-color: var(--color2-forest);
+    display: inline-block;
+    width: 25%;
+    height: 100%;
+}
+.colorSpanForest3 {
+    background-color: var(--color3-forest);
+    display: inline-block;
+    width: 25%;
+    height: 100%;
+}
+.colorSpanForest4 {
+    background-color: var(--color4-forest);
+    display: inline-block;
+    width: 25%;
+    height: 100%;
+}
+
+.colorSpanRoyal1 {
+    background-color: var(--color1-royal);
+    display: inline-block;
+    width: 25%;
+    height: 100%;
+}
+.colorSpanRoyal2 {
+    background-color: var(--color2-royal);
+    display: inline-block;
+    width: 25%;
+    height: 100%;
+}
+.colorSpanRoyal3 {
+    background-color: var(--color3-royal);
+    display: inline-block;
+    width: 25%;
+    height: 100%;
+}
+.colorSpanRoyal4 {
+    background-color: var(--color4-royal);
+    display: inline-block;
+    width: 25%;
+    height: 100%;
+}
+
+.colorSpanNatural1 {
+    background-color: var(--color1-natural);
+    display: inline-block;
+    width: 25%;
+    height: 100%;
+}
+.colorSpanNatural2 {
+    background-color: var(--color2-natural);
+    display: inline-block;
+    width: 25%;
+    height: 100%;
+}
+.colorSpanNatural3 {
+    background-color: var(--color3-natural);
+    display: inline-block;
+    width: 25%;
+    height: 100%;
+}
+.colorSpanNatural4 {
+    background-color: var(--color4-natural);
+    display: inline-block;
+    width: 25%;
+    height: 100%;
+}
+
+.colorSpanHot1 {
+    background-color: var(--color1-hot);
+    display: inline-block;
+    width: 25%;
+    height: 100%;
+}
+.colorSpanHot2 {
+    background-color: var(--color2-hot);
+    display: inline-block;
+    width: 25%;
+    height: 100%;
+}
+.colorSpanHot3 {
+    background-color: var(--color3-hot);
+    display: inline-block;
+    width: 25%;
+    height: 100%;
+}
+.colorSpanHot4 {
+    background-color: var(--color4-hot);
+    display: inline-block;
+    width: 25%;
+    height: 100%;
+}
+
+.colorSpanUndergrowth1 {
+    background-color: var(--color1-undergrowth);
+    display: inline-block;
+    width: 25%;
+    height: 100%;
+}
+.colorSpanUndergrowth2 {
+    background-color: var(--color2-undergrowth);
+    display: inline-block;
+    width: 25%;
+    height: 100%;
+}
+.colorSpanUndergrowth3 {
+    background-color: var(--color3-undergrowth);
+    display: inline-block;
+    width: 25%;
+    height: 100%;
+}
+.colorSpanUndergrowth4 {
+    background-color: var(--color4-undergrowth);
+    display: inline-block;
+    width: 25%;
+    height: 100%;
+}
+
+.colorSpanDesert1 {
+    background-color: var(--color1-desert);
+    display: inline-block;
+    width: 25%;
+    height: 100%;
+}
+.colorSpanDesert2 {
+    background-color: var(--color2-desert);
+    display: inline-block;
+    width: 25%;
+    height: 100%;
+}
+.colorSpanDesert3 {
+    background-color: var(--color3-desert);
+    display: inline-block;
+    width: 25%;
+    height: 100%;
+}
+.colorSpanDesert4 {
+    background-color: var(--color4-desert);
+    display: inline-block;
+    width: 25%;
+    height: 100%;
+}
+
+.colorSpanUnderwater1 {
+    background-color: var(--color1-underwater);
+    display: inline-block;
+    width: 25%;
+    height: 100%;
+}
+.colorSpanUnderwater2 {
+    background-color: var(--color2-underwater);
+    display: inline-block;
+    width: 25%;
+    height: 100%;
+}
+.colorSpanUnderwater3 {
+    background-color: var(--color3-underwater);
+    display: inline-block;
+    width: 25%;
+    height: 100%;
+}
+.colorSpanUnderwater4 {
+    background-color: var(--color4-underwater);
+    display: inline-block;
+    width: 25%;
+    height: 100%;
+}
+
+.colorSpan {
+  display: block;
+  border: 1px solid var(--color1);
+  height: 3em;
+  /*min-width: 22px;*/
+}
+
+.colorWrapperDiv {
+    flex: 1;
+    display: inline-block;
+    flex-grow: 1;
+    flex-basis: 22.5%;
+    margin: 1.25%;
+}
+
+#mapText {
+    float: left;
+    width: 55%;
+}
+
+#mapid { 
+    height: 46vw; 
+    width: 32vw;
+    float: right;
+    margin: 2% 2% 2% 2%;
+    border: 2px solid;
+}
+
+#map { 
+    height: 46vw; 
+    width: 32vw;
+    float: right;
+    margin: 2% 2% 2% 2%;
+    border: 2px solid;
+}
+@media(max-width: 1333px) {
+    .colorWrapperDiv {
+        flex-basis: 22.5%;
+        margin: 1.25%;
+    }
+    #subheader {
+        font-size: 1.6em;
+    } 
+    #dropdown-content {
+        font-size: 1.6em;
+    }
+}
+
+@media(max-width: 815px) {
+    .colorWrapperDiv {
+        flex-basis: 47.5%;
+        margin: 1.25%;
+    }
+    #subheader {
+        font-size: 1.2em;
+    } 
+    #dropdown-content {
+        font-size: 1.2em;
+    }
+    .columnP {
+        height: 70px;
+    }
+    #mapid {
+        width: 96%;
+        float: none;
+        height: 130vw; 
+    }
+    #mapText {
+        float: none;
+        width: 96%; 
+        margin: 2% 2% 2% 2%;
+    }
+}
+
+@media(max-width: 555px) {
+    .colorWrapperDiv {
+        flex-basis: 97.5%;
+        margin: 1.25%;
+    }
+    #subheader {
+        font-size: 0.8em;
+    }
+    #dropdown-content {
+        font-size: 0.8em;
+    }
+    .columnP {
+        height: 60px;
+    }
+    .next {
+        top: 29%;
+    }
+    .prev {
+        top: 29%;
+    }
+    #mainFrame {
+        margin-left: 1%;
+        margin-right: 1%;
+        width: 98%;
+    }
+}
+
+@media(max-width: 360px) {
+    .colorWrapperDiv {
+        flex-basis: 97.5%;
+        margin: 1.25%;
+    }
+    #subheader {
+        font-size: 0.6em;
+    }
+    #dropdown-content {
+        font-size: 0.6em;
+    }
+    .columnP {
+        height: 50px;
+    }
+}
+
+.colorWrapperWrapperDiv {
+    display: flex;
+    width: 90%;
+    margin: 5%;
+    justify-content: center;
+    flex-flow: row wrap;
+}
+
+.colorButton:hover {
+    background-color: var(--color1);
+    color: var(--color2);
+}
+
+.name {
+    background-color: var(--color3);
+    display: inline-block;
+    color: var(--color4);
+    border-color: var(--color4);
+    padding: 0.5%;
+    border: 1px;
+    resize: vertical;
+    font-family: sans-serif;
+    font-size: 100%;
+    margin: 0.5%;
+    width: 50%
+}
+
+#nameLabel {
+    font-weight: bold;
+    display: inline-block;
+}
+
+#submit {
+    background-color: var(--color2); 
+    border: 1px solid var(--color1);
+    color: var(--color3);
+    padding: 0.5%;
+    margin-left: auto;
+    float: right;
+    font-weight: bold;
+    margin-top:0.4%;
+    display: block;
+}
+
+#thumbContainer {
+    border: 2px solid var(--color1);
+    width: 99.95%;
+    border-top:0px solid;
+}
+
+#submit:hover {
+    background-color: var(--color1);
+    color: var(--color2);
+}
+
+.comment {
+  width: 100%;
+  padding: 0.5%;
+  box-sizing: border-box;
+  border: 1px;
+  margin-top: 0.5%;
+  margin-bottom: 0.5%;
+  background-color: var(--color3);
+  color: var(--color4);
+  resize: none;
+  font-family: sans-serif;
+  font-size: 100%;
+}
+
+.inputs {
+    margin: 0.5%;
+}
+
+.nameinputs {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    position:relative;
+    flex: 1 1 auto;
+}
+
+#noComs {
+    display: inline;
+    background-color: var(--color4);
+    color: var(--color1);
+    padding: 0.25% 1% 0.25% 1%;
+    font-size: 90%;
+    text-align: centre;
+}
+
+#warning {
+    display:none;
+    background-color: var(--color2); 
+    border: 1px solid var(--color1);
+    color: var(--color3);
+    margin-left: auto;
+    padding: 0.5%;
+    /* float: right; */
+    font-weight: bold;
+    /* width: 13.5em; */
+    /* margin-top:0.4%; */
+}
+
+#ok {
+    display: none;
+    background-color: var(--color2); 
+    border: 1px solid var(--color1);
+    color: var(--color3);
+    float: right;
+    font-weight: bold;
+    padding: 0.5%;
+    float: right;
+    /* margin-top:0.4%; */
+}
+
+#ok:hover {
+    background-color: var(--color1);
+    color: var(--color2);
+}
+

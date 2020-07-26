@@ -1,0 +1,4 @@
+$(document).ready(function () {
+  var headerHeight = $("header").height();
+  $(".content").css({ "padding-top": headerHeight });
+});

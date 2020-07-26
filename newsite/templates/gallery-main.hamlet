@@ -1,0 +1,21 @@
+<div .main-gallery-wrapper>
+    $if null galleryInfo
+      <p>hmm
+    $else
+      $forall gallery <- galleryInfo
+          <button .gallery-card 
+             onclick="window.location.href='@{GalleryR $ galleryId gallery}'">
+                <div .card-title> #{galleryTitle gallery}
+                $forall picInfo <- galleryPics gallery
+                   <picture .lazy 
+                            data-type="thumb"
+                            data-target-small="@{StaticR $ smallSize picInfo}"
+                            data-target-med="@{StaticR $ medSize picInfo}">
+                       <source .big-source 
+                               srcset="@{StaticR $ tinySize picInfo}" 
+                               media="(min-width: 550px)">
+                       <source .small-source 
+                               srcset="@{StaticR $ tinySize picInfo}" 
+                               media="(min-width: 200px)">
+                       <img src="@{StaticR $ tinySize picInfo}" 
+                            alt="#{caption picInfo}">

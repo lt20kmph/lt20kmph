@@ -1,0 +1,226 @@
+const numOfImages = #{rawJS num}
+
+function nextId(thisId, i, numOfImages) {
+    var nextId = ((parseInt(thisId) + i) % numOfImages + 
+                   numOfImages) % numOfImages;
+    return nextId;
+}
+
+function src(size, imgId) {
+    var src = $("#" + imgId).attr("data-target-" + size);
+    return src;
+}
+
+function setSrcs(thisOrNextOrPrev,imgId) {
+    var s = $("#" + thisOrNextOrPrev + "big-img");
+    var sources = s.children(".big-source, .small-source, .tiny-main");
+
+    async function setTinySrcs(sources,imgId) {
+        sources.each(function() {
+            var s = src("tiny", imgId);
+            var source = $(this)
+            if (source.attr("srcset") != undefined) {
+                source.attr("srcset",s);
+            } else if (source.attr("src") != undefined) {
+                source.attr("src",s);
+                source.css({"filter":"blur(20px)","transition":"filter 0.5s"});
+            };
+        });
+    };
+
+    async function setFullSrcs(sources,imgId) {
+        await setTinySrcs(sources,imgId);
+        sources.each(function(index, element) {
+            if (element.classList.contains("big-source")) {
+              element.setAttribute("srcset", src("full",imgId));
+            } else if (element.classList.contains("small-source")) {
+              element.setAttribute("srcset", src("big", imgId));
+            };
+        });
+        sources.each(function(){
+            var source = $(this)
+            if (source.attr("src") != undefined) {
+                // console.info('removing blur')
+                source.css("filter");
+                source.css({"filter":"none"});
+            };
+        });
+    };
+
+    async function removeClasses(s,sources,imgId) {
+        await setFullSrcs(sources, imgId);
+        $("#next-big-img, #previous-big-img")
+        .removeClass("slideInLeft slideInRight");
+        $("#big-img").removeClass("slideOutLeft slideOutRight");
+    };
+    removeClasses(s, sources, imgId);
+};
+
+function setImgs(mainImgId) {
+    var nextBigImgId = nextId(mainImgId,1,numOfImages); 
+    var prevBigImgId = nextId(mainImgId,-1,numOfImages); 
+    var caption = $("#" + mainImgId + " img").attr("alt");
+    var commentSrc = $("#" + mainImgId).attr("data-comment-src");
+    var bigImg = $('#big-img');
+    setSrcs("",mainImgId);
+    setSrcs("next-",nextBigImgId);
+    setSrcs("previous-",prevBigImgId);
+    bigImg.attr("data-id", mainImgId);
+    bigImg.attr("data-comment-src", commentSrc);
+    $("#next-big-img").attr("data-id", nextBigImgId);
+    $("#previous-big-img").attr("data-id", prevBigImgId);
+    $('.caption').html(caption);
+};
+
+function nextImg (i, numOfImages) {
+    $(".caption").hide();
+    closeComments();
+    $(".big-img-wrapper button").hide()
+    if (i > 0) {
+        $("#big-img").addClass("slideOutLeft")
+        $("#next-big-img").addClass("slideInLeft")
+    } else {
+        $("#big-img").addClass("slideOutRight")
+        $("#previous-big-img").addClass("slideInRight")
+    };
+    var thisId = $("#big-img").attr("data-id");
+    nextImgId = nextId(thisId,i,numOfImages);
+    var nextCaption = $("#" + nextImgId).attr("alt");
+    $("#next-big-img, #previous-big-img").on("animationend",function(){
+        setImgs(nextImgId);
+        $(".big-img-wrapper button").show();
+        $(".caption").fadeIn("fast");
+    }) ;
+    $('.caption').html(nextCaption);
+};
+
+function close () {
+    $(".overlay").css({ opacity: "0", "z-index": "-1" });
+    $(".main-img").css({ display: "none", "z-index": "-10" });
+    $(".controls").css({ display: "none" });
+    closeComments();
+};
+
+function addSubmitEvent (commentsSrc) {
+    $(".comments").load(commentsSrc + ' .comment-wrapper', function(){
+    setTimeout(function(){ 
+        $('#leave-a-comment').submit(function(e){
+            e.preventDefault();
+            // console.info(this);
+            var action = $(this).attr("action");
+            var name = $('#leave-a-comment input[name="new-name"]').val();
+            if (name.trim() == '' || name == 'Your name...') {
+                alert('You must enter a name!');
+                return false;
+            };
+            var comment = $('#leave-a-comment textarea').val(); 
+            if (comment.trim() == '' || comment == 'Enter your comment here...') {
+                alert('You must enter a comment!');
+                return false;
+            };
+            var data = $(this).serialize();
+            $.ajax({
+                url: action,
+                type: 'post',
+                data: data,
+                success:function(){
+                    addSubmitEvent(commentsSrc);
+                    // alert('success!')
+                }
+            });
+        });
+    },500);
+    });
+} 
+
+function toggleComments (commentsSrc) {
+    var p = $('#big-img').offset().top
+    var c = $('.controls').height()
+    $('.comments').css({"max-height":p - c - 15})
+    $(".comments").slideToggle("slow");
+    addSubmitEvent(commentsSrc);
+};
+
+function closeComments () {
+    $(".comments").hide();
+    $(".comments").html("");
+}
+
+$("#big-img").on("swiped-right", function(e) {
+    nextImg(-1,numOfImages);
+});
+
+$("#big-img").on('swiped-left', function(e) {
+    nextImg(1,numOfImages);
+});
+
+$(document).ready(function () {
+    $(".gallery picture").click(function () {
+        $(".overlay").css({ opacity: "0.93", 
+                            "z-index": "9", 
+                            top: "0" });
+        $(".controls").css({ display: "flex" });
+        $(".main-img").css({ display: "block", "z-index": "10" });
+
+        var bigId = $(this).attr("id");
+
+        setImgs(bigId);
+    });
+
+    $(".toggle-close").click(function () {
+        close();
+    });
+
+    $(".toggle-comment").click(function(){
+        commentSrc = $('#big-img').attr("data-comment-src");
+        toggleComments(commentSrc);
+    });
+
+    $(".previous-img").click(function () {
+        nextImg(-1, numOfImages);
+    });
+
+    $(".next-img").click(function () {
+        nextImg(1, numOfImages);
+    });
+
+    window.addEventListener("keydown", function (event) {
+        if (event.defaultPrevented) {
+            return; // Do nothing if the event was already processed
+        }
+
+        switch (event.key) {
+            case "Left": // IE/Edge specific value
+            case "ArrowLeft":
+                // Do something for "left arrow" key press.
+                nextImg(-1, numOfImages);
+                break;
+            case "Right": // IE/Edge specific value
+            case "ArrowRight":
+                nextImg(1, numOfImages);
+                break;
+            case "Esc": // IE/Edge specific value
+            case "Escape":
+                // This is not working??
+                // console.log('escape!')
+                close();
+                // Do something for "esc" key press.
+                break;
+            default:
+                // console.log(event.key)
+                return; // Quit when this doesn't handle the key event.
+        }
+    });   
+});
+
+// First we get the viewport height and we multiple it by 1% to get a value for a vh unit
+let vh = window.innerHeight * 0.01;
+// Then we set the value in the --vh custom property to the root of the document
+document.documentElement.style.setProperty('--vh', `${vh}px`);
+
+// We listen to the resize event
+window.addEventListener('resize', () => {
+  // We execute the same script as before
+  let vh = window.innerHeight * 0.01;
+  document.documentElement.style.setProperty('--vh', `${vh}px`);
+});

@@ -1,0 +1,27 @@
+mapboxgl.accessToken = mbKey;
+
+var map = new mapboxgl.Map({
+  container: "map",
+  style: "mapbox://styles/mapbox/light-v10",
+  center: [-60.16, -32.8],
+  zoom: 3,
+});
+
+map.on('load',function(){
+    map.loadImage(
+        '@{StaticR marker_green_dark_png}',
+        function(error, image) {
+        if (error) throw error;
+        map.addImage('custom-marker', image);
+        map.addSource("path", {
+                type: "geojson",
+                data: "@{StaticR paths_path_geojson}"
+        });
+        map.addLayer({
+        'id': 'path',
+        'type': 'symbol',
+        'source': 'path',
+        'layout': { 'icon-image': 'custom-marker' }
+        });
+    });
+});

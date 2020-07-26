@@ -1,0 +1,74 @@
+<script src="leaflet.js"></script>
+<script src="secrets.js"></script>
+
+<div id="Map" class="clearfix atabcontent">
+<div id="mapText">
+<h3>Interactive Map</h3>
+<p>You can explore my route with the map on the right, soon I will add some more
+features to it. It is not 100% accurate though, especially the part in Brazil.
+It's interesting to compare what happens when you zoom in on Peru compared to
+Argentina.</p>
+<h3>Explanation of the colours</h3>
+<p> The red line is parts where I rode the bike. The green dotted line is for boat trips and the blue ones are for buses/hitchiking.</p>
+</div>
+<div id="mapid"></div>
+<div class="clear"></div>
+</div>
+<script src="tracks/track.js"></script>
+<script src="leaflet.curve.js"></script>
+<script>
+    var route = L.map('mapid').setView([-23.16, -62.8], 3);
+
+    L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+        <!-- L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', { -->
+        <!-- L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}', { -->
+        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a>, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+        minZoom: 0,
+        maxZoom: 18,
+        id: 'mapbox/streets-v11',
+        accessToken: mb_token,
+        tileSize: 512,
+        zoomOffset: -1
+    }).addTo(route);
+
+    var rideStyle = {
+        "color": "#cb221f",
+        "weight": 3,
+        "opacity": 0.85
+    };
+
+
+for (i = 0; i < 28; i++) {
+    L.geoJSON(track[i], { style: rideStyle }).addTo(route);
+}
+
+L.control.scale().addTo(route);
+
+var path = L.curve(['M',[-51.72628,-72.50625], 'C',
+    [-49.55,-75.20], [-43.54,-74.44], [-41.47180,-72.93963]],
+    {color:'#237922',dashArray:'5'}).addTo(route);
+
+var path = L.curve(['M',[-33.58086,-71.61324], 'C',
+    [-33.44,-71.41], [-33.34,-70.94], [-33.44118,-70.63392]],
+    {color:'#223179',dashArray:'5'}).addTo(route);
+
+var path = L.curve(['M',[-33.44118,-70.63392], 'C',
+    [-33.19,-70.98], [-32.87,-71.24], [-32.44963,-71.23167]],
+    {color:'#223179',dashArray:'5'}).addTo(route);
+
+var path = L.curve(['M',[-53.29996,-70.36493], 'Q',
+    [-53.303,-70.682], [-53.16409,-70.90703]], 
+    {color:'#237922',dashArray:'5'}).addTo(route);
+
+var path = L.curve(['M',[-52.45420,-69.54159], 'Q',
+    [-52.467,-69.518], [-52.49600,-69.52067]], 
+    {color:'#237922',dashArray:'5'}).addTo(route);
+
+var path = L.curve(['M',[-32.62179,-60.15770], 'Q',
+    [-32.763,-60.441], [-32.95949,-60.66155]], 
+    {color:'#223179',dashArray:'5'}).addTo(route);
+
+var path = L.curve(['M',[-12.06211,-77.03653], 'Q',
+    [-11.71011,-77.08946], [-11.57302,-77.27039]],
+    {color:'#223179',dashArray:'5'}).addTo(route);
+</script>

@@ -1,0 +1,32 @@
+<picture .lazy .banner
+    data-type="full"
+    data-target-big="@{StaticR pics_non_gallery_800_banner_1_jpg}"
+    data-target-full="@{StaticR pics_non_gallery_1500_banner_1_jpg}">
+    <source .big-source srcset="@{StaticR pics_non_gallery_20_banner_1_jpg}">
+    <source .small-source srcset="@{StaticR pics_non_gallery_20_banner_1_jpg}">
+    <img src="@{StaticR pics_non_gallery_20_banner_1_jpg}">
+<div .stats>
+    <h1>Stats
+    <p>
+        Here are some stats about the trip, just for fun.
+        Let me know if there are some interesting stats you want to hear about.
+        All numbers listed are approximate.
+    <p>
+        <b>Approximate distance cycled:</b> <span id="kmrode">18600</span> km
+        (&asymp; <span id="milesrode">11560</span> miles)<br>
+        <b>How long was the trip:</b> 62 weeks<br>
+        <b>Number of punctures:</b> 15<br>
+        <b>Number of chains used:</b> 3<br>
+        <b>Number of destroyed kickstands:</b> 2<br>
+        <b>Longest time without a shower:</b> 8 days<br>
+        <b>Countries visited:</b> 5<br>
+        <b>Longest time without internet:</b> 12 days<br>
+        <b>Furthest south reached:</b> 50.8&deg; S<br> 
+        <b>Furthest north reached:</b> 2.2&deg; S<br>
+        <b>Furthest distance travelled (while on the bike) without
+        pedalling:</b> <span id="furthestkmped">40</span> km (&asymp; <span
+            id="furthestmilesped">25</span> miles)<br>
+        <b>Highest point reached:</b> <span id="highestm">5190</span>m
+        (&asymp; <span id="highestfeet">17000</span> ft)<br>
+        <b>Furthest cycled in one day:</b> <span id="furthestkm">280</span> km
+            (&asymp; <span id="furthestmiles">174</span> miles)

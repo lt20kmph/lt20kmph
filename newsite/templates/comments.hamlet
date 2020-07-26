@@ -1,0 +1,23 @@
+$if null comments
+    <div .comment-wrapper>
+        There are no comments yet
+$else
+    <div .comments>
+        $forall c <- comments
+            <div .comment-wrapper>
+                <div .comment-time> #{time c}, #{name c} wrote:
+                <div .comment-comment> #{comment c}
+<form #leave-a-comment .comment-wrapper action="@{CommentsR gid pid}"
+                                        method="post"
+                                        onsubmit="return false">
+    <div .name-input.comment-time>
+        Name: <input required type="text"
+                     name="new-name"
+                     value="Your name..."
+                     onfocus="this.value=''">
+        <input required type="submit" value="Send!">
+    <textarea required .comment-comment rows="2" 
+        name="new-comment"
+        form="leave-a-comment"
+        onfocus="this.value=''">
+        Enter your comment here...

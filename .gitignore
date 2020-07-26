@@ -8,3 +8,16 @@ moment*
 secrets.js
 yall*
 pages
+.stack-work
+*.db
+test/
+static/
+yesod-devel/
+*.cabal
+*.data
+*.live
+*.aes
+newsite/README.md
+*.lock
+*.dir-locals.el
+checkdb.py

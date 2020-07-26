@@ -1,0 +1,7 @@
+<div .map>
+    <h2> Interactive map of my journey
+    <p>You can scroll, zoom and pan the map to explore a rough approximation of
+        my route. There are some points with missing data and slight
+        inaccuracies, but it is enough to give a good idea of where I went ;).
+<div .map-wrapper>
+    <div #map>

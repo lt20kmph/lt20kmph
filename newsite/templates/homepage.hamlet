@@ -1,0 +1,110 @@
+<picture .lazy .banner
+    data-type="full"
+    data-target-big="@{StaticR pics_non_gallery_800_banner_2_jpg}"
+    data-target-full="@{StaticR pics_non_gallery_1500_banner_2_jpg}">
+    <source .big-source srcset="@{StaticR pics_non_gallery_20_banner_2_jpg}">
+    <source .small-source srcset="@{StaticR pics_non_gallery_20_banner_2_jpg}">
+    <img src="@{StaticR pics_non_gallery_20_banner_2_jpg}">
+
+<div .home>
+    <h1>Hello!
+
+    <p> <b>[Updated and redesigned July 2020] </b>
+
+    <p> My name is Oli and this is a website about a bicycle trip. #
+        In 2019, I spent most of the year travelling through South America by
+        bike. #
+        I started in January 2019 and finished in March 2020.
+
+    <p> On this website you can see many pictures in the gallery, #
+        a map of my route and a few words which I have written #
+        recalling various experiences.
+
+    <h2>Slideshow with music
+
+    <p> The slide show below consists of some of my favourite photos from #
+        the trip set to some peaceful music. Hope you enjoy!
+
+    <iframe 
+            src="https://www.youtube.com/embed/hL5ssNVRaRQ/?&loop=1&modestbranding=1" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen>
+    <h2>Why lt20kmph?
+
+    <p> What a weird name for a website about a bike ride? #
+        Well... not really. #
+        lt20kmph stands for 'less than 20 kilometres per hour'. #
+        This is why travelling by bike is so much fun! #
+        Very rarely do you go faster than 20kmph so you see and feel everything.
+
+    <h2>About the website? 
+
+    <p> Well I was inspired to make it after many people told #
+        me they enjoyed hearing storeys and looking at photos about my trip. #
+        During my trip I was posting updates to this website, mainly photos. #
+        Since coming back to the UK I have been learning more about web #
+        design and so I decided to redesign this site into its present form.
+        The original version can be found #
+        <a href="https://lt20kmph.co.uk/oldsite">here</a>.
+
+    <p> At some point I might get around to rewriting or adding more to the #
+        written accounts. #
+        The written accounts probably contain many typos and grammatical #
+        errors since it was written on the road (sometimes in an incredible #
+        rush) with minimal editing.
+
+    <p> The main content of this site is in the gallery, #
+        I have an enormous quality of pictures and as you may expect it #
+        is quite hard to decide which ones to display. #
+        The quality and quantity of photos is much higher in the latter part #
+        of the trip. This is due to two reasons, the first one is that #
+        I didn't have the website to begin with and so the pictures were
+        chosen in retrospect. #
+        The second reason is that about half way through the trip I was #
+        kindly donated a vastly superior camera via some connections of #
+        my brother, so I owe him many thanks for making this possible. #
+
+    <p> It is possible to leave me comments in the gallery, I look forward #
+        to reading your comments if you decide to leave them!
+        Many thanks to Mike Lock for leaving many insightful comments #
+        about the flora and fauna appearing in some of my photos.
+
+    <p> If you want to contact me for any reason, I accept emails to #
+        lostoli [at] gmail dot com. 
+
+    <h2>Resources
+
+    <p> If you are planning on your own adventure, especially if you are #
+        going to be in South America you might find these resources useful #
+        I certainly did!
+    <ul>
+        <li><a href="https://www.pikesonbikes.com">Andes by Bike</a>
+            By the Pikes on Bikes, lots of useful route info and general #
+            information about bicycle travel in South America. #
+            The website seems down as of July 2020, hopefully it comes back up #
+            at some point!
+
+        <li><a href="https://www.bikepacking.com">Bikepacking.com</a>
+            Lots of useful route information. Some of the routes can be a bit
+            on the extreme side for your average bicycle tourist but many #
+            are possible on a standard touring bike, I followed many of these
+            routes through Peru.
+
+        <li><a href="https://www.ioverlander.com">iOverlander</a>
+            This is very nice app featuring lots of useful information 
+            about places to stay (places to put your tent) 
+            and things to see on the road.
+
+        <li><a href="https://www.openstreetmap.org">Open Street Map</a>
+            Wonderful maps, mostly very accurate (although sometimes I #
+            encountered issues) and you probably won't get lost using these.
+
+        <li><a href="https://www.youtube.com/channel/UCqiYX6cqxQI9CqhH_kvHeOw">
+            Iohan Gueorguiev</a>
+            AKA The bike wanderer, if you need inspiration this is for you.
+            It is a  fantastic series of Youtube videos documenting Iohan's
+            journey from Alaska to Patagonia by bike, kayak and foot.
+            The quality of the videos in the later episodes rivals anything 
+            produced by the BBC or Netflix and Iohan's love of nature 
+            and attitude towards travel is inspiring and infectious.

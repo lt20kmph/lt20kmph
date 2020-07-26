@@ -1,0 +1,26 @@
+-- By default this file is used by `persistFileWith` in Model.hs (which is imported by Foundation.hs)
+-- Syntax for this file here: https://github.com/yesodweb/persistent/blob/master/docs/Persistent-entity-syntax.md
+
+Comment
+    picture PictureId 
+    name Text sqltype=varchar(255)
+    comment Text sqltype=varchar(1023)
+    time UTCTime default=current_timestamp 
+    deriving Show
+
+Story
+    title Text sqltype=varchar(255)
+    story Text
+    deriving Show
+
+Picture
+    picNo Int
+    storyNo StoryId
+    caption Text
+    UniquePicture picNo storyNo
+    deriving Show
+
+Point json
+    long Rational 
+    lat Rational
+    deriving Show

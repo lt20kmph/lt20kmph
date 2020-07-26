@@ -1,0 +1,49 @@
+// // Set up an intersection observer with some options
+// var observer = new IntersectionObserver(lazyLoad, {
+//   // where in relation to the edge of the viewport, we are observing
+//   rootMargin: "100px",
+
+//   // how much of the element needs to have intersected
+//   // in order to fire our loading function
+//   threshold: 1.0,
+// });
+
+// // Tell our observer to observe all img elements with a "lazy" class
+// var lazyImages = document.querySelectorAll("picture.lazy");
+// lazyImages.forEach((img) => {
+//   observer.observe(img);
+// });
+
+// function lazyLoad(elements) {
+//   elements.forEach((element) => {
+//     var picture = element.target;
+//     if (element.intersectionRatio > 0) {
+//       // gather all the image and source elements in this picture
+//       var sources = picture.children;
+//       var smallSrc = picture.getAttribute("data-small-src");
+//       var medSrc = picture.getAttribute("data-med-src");
+
+//       for (var s = 0; s < sources.length; s++) {
+//         var source = sources[s];
+
+//         // set a new srcset on the source elements
+//         if (source.getAttribute("id") == "big-thumb") {
+//           source.setAttribute("srcset", medSrc);
+//         } else if (source.getAttribute("id") == "small-thumb") {
+//           source.setAttribute("srcset", smallSrc);
+//         }
+//         // remove the lazy class when the full image is loaded to unblur
+//         source.addEventListener(
+//           "load",
+//           (image) => {
+//             image.target.closest("picture").classList.remove("lazy");
+//           },
+//           false
+//         );
+//       }
+
+//       // stop observing this element. Our work here is done!
+//       observer.unobserve(picture);
+//     }
+//   });
+// }
