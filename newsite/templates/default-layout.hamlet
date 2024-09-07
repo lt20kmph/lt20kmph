@@ -4,6 +4,7 @@
   <nav>
     <ul>
       <li><a href="@{HomeR}">Home
+      <li><a href="@{GalleryR 30}">Scotland 2024
       <li><a href="@{GalleryMainR}">Gallery
       <li><a href="@{MapR}">Map
       <li><a href="@{StatsR}">Stats</a>

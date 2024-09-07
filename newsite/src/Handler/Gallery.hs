@@ -63,6 +63,7 @@ getGalleryMainR = do
         $(widgetFile "gallery-main")
 
 mkPictureInfo :: GalleryId -> (Int,Text) -> PictureInfo
+
 mkPictureInfo gid x =  PictureInfo ((pack . show . m . fst) x)
                                    (f "1500" x)
                                    (f "800" x)
