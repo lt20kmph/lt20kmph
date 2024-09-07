@@ -30,6 +30,7 @@ getMapR :: Handler Html
 getMapR = do
   defaultLayout $ do
     setTitle "< 20 kmph: map"
+    addScript $ StaticR js_secrets_js
     addScriptRemote
       "https://api.mapbox.com/mapbox-gl-js/v1.11.1/mapbox-gl.js"
     addStylesheetRemote

@@ -35,6 +35,8 @@ function setSrcs(thisOrNextOrPrev,imgId) {
               element.setAttribute("srcset", src("full",imgId));
             } else if (element.classList.contains("small-source")) {
               element.setAttribute("srcset", src("big", imgId));
+            } else if (element.tagName == "IMG") {
+              element.setAttribute("src", src("big", imgId));
             };
         });
         sources.each(function(){

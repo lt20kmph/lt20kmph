@@ -159,9 +159,8 @@ instance Yesod App where
         -- storys <- getStoryList
 
         pc <- widgetToPageContent $ do
-            -- addStylesheet $ StaticR css_bootstrap_css
             addStylesheet $ StaticR css_normalise_css
-            -- addStylesheetRemote "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+            addScriptRemote "https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?version=4.8.0&features=IntersectionObserver"
             $(widgetFile "default-layout")
         withUrlRenderer $(hamletFile "templates/default-layout-wrapper.hamlet")
 
